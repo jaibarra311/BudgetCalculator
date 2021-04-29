@@ -33,5 +33,9 @@ public class BudgetCalculatorTest {
 
     }
 
+    @Test
+    void fakeTest() {
+        assertTrue(true);
+    }
 
 }

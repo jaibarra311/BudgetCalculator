@@ -1,5 +1,3 @@
-package test;
-
 import controller.BudgetCalculator;
 import model.Budget;
 import model.ResidualBudget;
@@ -10,8 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class BudgetCalculatorTest {
-
-
     @Test
     void Calculate_ValidBudgetInput_ReturnsResidualBudget() {
         Budget budget = new Budget(10000, 1000, 1000, 1000, 1000, 1000);
@@ -20,18 +16,11 @@ public class BudgetCalculatorTest {
         ResidualBudget actual = BudgetCalculator.calculate(budget);
 
         assertTrue(expected.equals(actual));
-
-
     }
 
     @Test
     void Calculate_InvalidBudgetInput_ThrowsException() {
-
         Exception exception = assertThrows(IllegalArgumentException.class, ()-> new Budget(-10000, 1000, 1000, 1000, 1000, 1000));
         assertEquals(negativeValueMessage, exception.getMessage());
-
-
     }
-
-
 }

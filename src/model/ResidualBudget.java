@@ -4,10 +4,17 @@ public class ResidualBudget {
     private double residualBudget;
     private double percentOfExpenses;
 
-
     public ResidualBudget(double residualBudget, double percentOfExpenses) {
         this.residualBudget = residualBudget;
         this.percentOfExpenses = percentOfExpenses;
+    }
+
+    public double getResidualBudget() {
+        return residualBudget;
+    }
+
+    public double getPercentOfExpenses() {
+        return percentOfExpenses;
     }
 
     @Override

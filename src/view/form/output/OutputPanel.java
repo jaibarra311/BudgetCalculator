@@ -11,6 +11,12 @@ public class OutputPanel extends JPanel implements Clearable {
     private final MessageField messageField = new MessageField();
     private ResidualBudget residualBudget;
 
+    public OutputPanel() {
+        super(new GridLayout(2, 1));
+        this.add(budgetHealthIndicatorField);
+        this.add(messageField);
+    }
+
     public void update(ResidualBudget residualBudget) {
         this.residualBudget = residualBudget;
 
@@ -24,17 +30,17 @@ public class OutputPanel extends JPanel implements Clearable {
     }
 
     private void overBudget() {
-        budgetHealthIndicatorField.update((int) residualBudget.getPercentOfExpenses(), Color.RED);
+        budgetHealthIndicatorField.update((int) (residualBudget.getPercentOfExpenses() * 100), Color.RED);
         messageField.setText(" -- OVER BUDGET -- ");
     }
 
     private void healthyBudget() {
-        budgetHealthIndicatorField.update((int) residualBudget.getPercentOfExpenses(), Color.GREEN);
+        budgetHealthIndicatorField.update((int) (residualBudget.getPercentOfExpenses() * 100), Color.GREEN);
         messageField.setText("You have plenty of room in your budget! Good job!");
     }
 
     private void defaultOutput() {
-        budgetHealthIndicatorField.update((int) residualBudget.getPercentOfExpenses(), Color.BLUE);
+        budgetHealthIndicatorField.update((int) (residualBudget.getPercentOfExpenses() * 100), Color.BLUE);
         messageField.setText("You have $" + residualBudget.getResidualBudget() + " left in your budget.");
     }
 

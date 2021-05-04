@@ -1,26 +1,46 @@
 package view;
 
+import view.form.buttons.ButtonsPanel;
+import view.form.input.InputPanel;
+import view.form.input.fields.*;
+import view.form.output.OutputPanel;
+
 import javax.swing.*;
+import java.awt.*;
 
-public class BudgetForm {
-    private JPanel mainPanel;
-    private JPanel input;
-    private JFormattedTextField monthlyIncomeInput;
-    private JLabel monthlyIncomeLabel;
-    private JFormattedTextField housingExpensesInput;
-    private JLabel housingExpensesLabel;
-    private JLabel insuranceAndUtilitiesLabel;
-    private JFormattedTextField insuranceAndUtilitiesInput;
-    private JFormattedTextField restaurantsAndFoodInput;
-    private JLabel restaurantsAndFoodLabel;
-    private JFormattedTextField automobileExpensesInput;
-    private JLabel automobileExpensesLabel;
-    private JPanel buttons;
-    private JPanel output;
-    private JButton submitButton;
-    private JButton clearButton;
-    private JProgressBar budgetHealthIndicatorBar;
-    private JTextArea messageBox;
+public class BudgetForm extends JFrame {
+    InputPanel inputPanel;
+    ButtonsPanel buttonsPanel = new ButtonsPanel();
+    OutputPanel outputPanel = new OutputPanel();
 
+    public BudgetForm() {
+        super("Budget Calculator");
+        initializeForm();
+    }
 
+    private void initializeForm() {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(400, 500);
+
+        Container panel = this.getContentPane();
+        panel.setLayout(new GridLayout(3,1));
+
+        createInputPanel();
+
+        panel.add(inputPanel);
+        panel.add(buttonsPanel);
+        panel.add(outputPanel);
+
+        this.setVisible(true);
+    }
+
+    private void createInputPanel() {
+        inputPanel = new InputPanel(
+                new MonthlyIncomeField(),
+                new HousingExpensesField(),
+                new InsuranceAndUtilitiesField(),
+                new RestaurantsAndFoodField(),
+                new AutomobileExpensesField()
+        );
+    }
 }
